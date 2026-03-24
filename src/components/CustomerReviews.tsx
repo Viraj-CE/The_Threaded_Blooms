@@ -1,47 +1,40 @@
-import { Star } from "lucide-react";
-
 const reviews = [
   {
     name: "Sarah M.",
-    text: "The Lavender Serenity candle is absolutely divine. The scent fills the entire room without being overwhelming. Will definitely order again!",
-    rating: 5,
+    text: "The Lavender Serenity candle is absolutely divine. The scent fills the entire room without being overwhelming.",
   },
   {
     name: "James R.",
-    text: "Bought the gift set for my wife and she loved it. Beautiful packaging and the candles burn evenly. Top quality.",
-    rating: 5,
+    text: "Bought the gift set for my wife and she loved it. Beautiful packaging and the candles burn evenly.",
   },
   {
     name: "Priya K.",
-    text: "Finally found candles made with natural ingredients that actually smell amazing. The Amber Glow is my new favorite.",
-    rating: 5,
+    text: "Finally found candles made with natural ingredients that actually smell amazing. My new favorite brand.",
   },
 ];
 
 const CustomerReviews = () => {
   return (
-    <section className="py-20 md:py-28 bg-secondary">
+    <section className="py-24 md:py-36">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-4">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-4">
+            Testimonials
+          </p>
+          <h2 className="font-heading text-3xl md:text-[2.8rem] font-light text-foreground">
             What Our Customers Say
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto">
           {reviews.map((review) => (
             <div
               key={review.name}
-              className="bg-background rounded-lg p-8 shadow-sm"
+              className="bg-background p-8 md:p-10"
             >
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} size={16} className="fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="font-body text-muted-foreground leading-relaxed mb-6 italic">
+              <p className="font-heading text-foreground/80 leading-[1.7] text-base italic mb-8">
                 "{review.text}"
               </p>
-              <p className="font-heading text-foreground font-medium">
+              <p className="font-body text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
                 {review.name}
               </p>
             </div>

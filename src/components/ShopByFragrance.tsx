@@ -1,34 +1,33 @@
 const fragrances = [
-  { name: "Floral", emoji: "🌸", description: "Rose, Lavender, Jasmine" },
-  { name: "Citrus", emoji: "🍊", description: "Bergamot, Lemon, Orange" },
-  { name: "Woody", emoji: "🌲", description: "Sandalwood, Cedar, Oud" },
-  { name: "Fresh", emoji: "🌿", description: "Eucalyptus, Mint, Sea Salt" },
+  { name: "Floral", notes: "Rose · Lavender · Jasmine" },
+  { name: "Citrus", notes: "Bergamot · Lemon · Orange" },
+  { name: "Woody", notes: "Sandalwood · Cedar · Oud" },
+  { name: "Fresh", notes: "Eucalyptus · Mint · Sea Salt" },
 ];
 
 const ShopByFragrance = () => {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-24 md:py-36">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-4">
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-4">
+            Find your signature scent
+          </p>
+          <h2 className="font-heading text-3xl md:text-[2.8rem] font-light text-foreground">
             Shop by Fragrance
           </h2>
-          <p className="font-body text-muted-foreground">
-            Find your signature scent.
-          </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {fragrances.map((frag) => (
             <div
               key={frag.name}
-              className="group bg-card rounded-lg p-8 text-center hover:shadow-md transition-all duration-300 cursor-pointer border border-border hover:border-primary/30"
+              className="group border border-border rounded-sm p-8 md:p-10 text-center cursor-pointer hover:border-primary/40 transition-colors duration-500"
             >
-              <div className="text-4xl mb-4">{frag.emoji}</div>
-              <h3 className="font-heading text-xl font-medium text-foreground mb-2">
+              <h3 className="font-heading text-2xl md:text-3xl font-light text-foreground mb-3">
                 {frag.name}
               </h3>
-              <p className="font-body text-sm text-muted-foreground">
-                {frag.description}
+              <p className="font-body text-xs text-muted-foreground tracking-wide font-light">
+                {frag.notes}
               </p>
             </div>
           ))}
