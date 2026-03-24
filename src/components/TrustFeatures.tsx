@@ -1,28 +1,23 @@
 import { Leaf, Hand, Truck, Heart } from "lucide-react";
 
 const features = [
-  { icon: Leaf, title: "Eco-Friendly", description: "Natural ingredients, sustainable packaging" },
-  { icon: Hand, title: "Handcrafted", description: "Small-batch, made with love" },
-  { icon: Truck, title: "Fast Delivery", description: "Free shipping on orders over $50" },
-  { icon: Heart, title: "Trusted by 5000+", description: "Customers who love our products" },
+  { icon: Leaf, title: "Eco-Friendly" },
+  { icon: Hand, title: "Handcrafted" },
+  { icon: Truck, title: "Free Shipping 50+" },
+  { icon: Heart, title: "5000+ Happy Customers" },
 ];
 
 const TrustFeatures = () => {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-16 md:py-20 border-y border-border">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-20">
           {features.map((feature) => (
-            <div key={feature.title} className="text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-accent/20 flex items-center justify-center">
-                <feature.icon size={24} className="text-accent" />
-              </div>
-              <h3 className="font-heading text-lg font-medium text-foreground mb-1">
+            <div key={feature.title} className="flex items-center gap-3">
+              <feature.icon size={18} strokeWidth={1.5} className="text-muted-foreground" />
+              <span className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground">
                 {feature.title}
-              </h3>
-              <p className="font-body text-sm text-muted-foreground">
-                {feature.description}
-              </p>
+              </span>
             </div>
           ))}
         </div>

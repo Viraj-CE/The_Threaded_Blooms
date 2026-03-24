@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const FeatureBanner = () => {
   return (
-    <section className="relative w-full py-28 md:py-36">
+    <section className="relative w-full py-32 md:py-44">
       <div className="absolute inset-0">
         <img
           src={bannerImg}
@@ -13,16 +13,16 @@ const FeatureBanner = () => {
           height={800}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/50" />
+        <div className="absolute inset-0 bg-foreground/55" />
       </div>
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-light text-primary-foreground mb-6">
+        <p className="font-body text-[11px] tracking-[0.3em] uppercase text-primary-foreground/50 mb-6">
+          Seasonal Collection
+        </p>
+        <h2 className="font-heading text-3xl md:text-5xl lg:text-[3.5rem] font-light text-primary-foreground mb-8 max-w-2xl mx-auto leading-[1.15]">
           Celebrate with Warm, Festive Scents
         </h2>
-        <p className="font-body text-primary-foreground/80 mb-8 max-w-lg mx-auto">
-          Discover our seasonal collection — perfect for gifting or setting the mood at home.
-        </p>
-        <Button variant="hero" size="lg" className="px-10 py-6">
+        <Button variant="hero" size="lg" className="px-12 py-7 text-[11px]">
           Explore Collection
         </Button>
       </div>
