@@ -1,17 +1,11 @@
-import product1 from "@/assets/product-candle-1.jpg";
-import product2 from "@/assets/product-candle-2.jpg";
-import product3 from "@/assets/product-candle-3.jpg";
-import product4 from "@/assets/product-candle-4.jpg";
 import { Button } from "@/components/ui/button";
-
-const products = [
-  { id: 1, name: "Amber Glow", price: "$28", image: product1 },
-  { id: 2, name: "Lavender Serenity", price: "$32", image: product2 },
-  { id: 3, name: "Rosé Copper", price: "$35", image: product3 },
-  { id: 4, name: "Bloom Gift Set", price: "$72", image: product4 },
-];
+import { mockProducts } from "@/data/mockProducts";
+import { useCart } from "@/context/CartContext";
+import { Link } from "react-router-dom";
 
 const BestSellers = () => {
+  const { addItem } = useCart();
+  const products = mockProducts.slice(0, 4);
   return (
     <section id="shop" className="py-24 md:py-36">
       <div className="container mx-auto px-6">
@@ -29,7 +23,7 @@ const BestSellers = () => {
               key={product.id}
               className="group cursor-pointer"
             >
-              <div className="aspect-[3/4] overflow-hidden rounded-sm mb-5">
+              <Link to={`/product/${product.id}`} className="block aspect-[3/4] overflow-hidden rounded-sm mb-5">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -38,15 +32,31 @@ const BestSellers = () => {
                   height={853}
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                 />
-              </div>
-              <div className="space-y-1.5">
-                <h3 className="font-heading text-base md:text-lg font-normal text-foreground">
-                  {product.name}
-                </h3>
+              </Link>
+              <div className="space-y-1.5 flex flex-col items-center text-center">
+                <Link to={`/product/${product.id}`}>
+                  <h3 className="font-heading text-base md:text-lg font-normal text-foreground hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+                </Link>
                 <p className="font-body text-muted-foreground text-sm font-light">
-                  {product.price}
+                  ${product.price}
                 </p>
-                <Button variant="cart" size="sm" className="w-full mt-3 rounded-sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full mt-3 rounded-sm border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addItem({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                      quantity: 1,
+                    });
+                  }}
+                >
                   Add to Cart
                 </Button>
               </div>

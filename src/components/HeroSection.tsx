@@ -1,5 +1,6 @@
 import heroImg from "@/assets/hero-candles.jpg";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -25,9 +26,11 @@ const HeroSection = () => {
           <p className="font-body text-sm md:text-base text-primary-foreground/70 mb-10 max-w-md leading-relaxed font-light">
             Embrace the warmth. Fill your space with calm, comfort, and the gentle glow of hand-poured fragrance.
           </p>
-          <Button variant="hero" size="lg" className="px-12 py-7 text-[11px]">
-            Shop Now
-          </Button>
+          <Link to="/shop">
+            <Button variant="hero" size="lg" className="px-12 py-7 text-[11px]">
+              Shop Now
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

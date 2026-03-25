@@ -1,9 +1,10 @@
-import { Flame, Wind, Droplets, Gift } from "lucide-react";
+import { Flame, Wind, Flower2, Gift } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   { name: "Candles", icon: Flame },
   { name: "Air Fresheners", icon: Wind },
-  { name: "Reed Diffusers", icon: Droplets },
+  { name: "Bouquets", icon: Flower2 },
   { name: "Gift Sets", icon: Gift },
 ];
 
@@ -18,15 +19,16 @@ const ShopByCategory = () => {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
           {categories.map((cat) => (
-            <div
+            <Link
+              to={`/shop?category=${encodeURIComponent(cat.name)}`}
               key={cat.name}
-              className="group bg-secondary p-10 md:p-14 text-center cursor-pointer hover:bg-background transition-colors duration-500"
+              className="group bg-secondary p-10 md:p-14 text-center cursor-pointer hover:bg-background transition-colors duration-500 block"
             >
               <cat.icon size={28} strokeWidth={1.2} className="mx-auto mb-5 text-foreground/60 group-hover:text-primary transition-colors duration-500" />
               <h3 className="font-heading text-lg md:text-xl font-normal text-foreground">
                 {cat.name}
               </h3>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

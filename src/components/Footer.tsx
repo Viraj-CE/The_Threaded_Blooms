@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,11 +19,16 @@ const Footer = () => {
               Shop
             </h4>
             <ul className="space-y-3">
-              {["Candles", "Air Fresheners", "Reed Diffusers", "Gift Sets"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="font-body text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300 font-light">
-                    {link}
-                  </a>
+              {[
+                { name: "Candles", path: "/shop?category=Candles" },
+                { name: "Air Fresheners", path: "/shop?category=Air Fresheners" },
+                { name: "Bouquets", path: "/shop?category=Bouquets" },
+                { name: "Gift Sets", path: "/shop?category=Gift Sets" }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="font-body text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300 font-light">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -32,11 +38,16 @@ const Footer = () => {
               Company
             </h4>
             <ul className="space-y-3">
-              {["Our Story", "Contact", "FAQs", "Shipping"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="font-body text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300 font-light">
-                    {link}
-                  </a>
+              {[
+                { name: "Our Story", path: "/our-story" },
+                { name: "Contact", path: "/contact" },
+                { name: "FAQs", path: "/faqs" },
+                { name: "Shipping", path: "/shipping" }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="font-body text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300 font-light">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -46,7 +57,7 @@ const Footer = () => {
               Follow
             </h4>
             <div className="flex gap-5">
-              <a href="#" className="text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300">
+              <a href="https://www.instagram.com/thethreadedbloom_/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300">
                 <Instagram size={18} strokeWidth={1.5} />
               </a>
               <a href="#" className="text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300">

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const fragrances = [
   { name: "Floral", notes: "Rose · Lavender · Jasmine" },
   { name: "Citrus", notes: "Bergamot · Lemon · Orange" },
@@ -19,9 +21,10 @@ const ShopByFragrance = () => {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {fragrances.map((frag) => (
-            <div
+            <Link
+              to="/shop"
               key={frag.name}
-              className="group border border-border rounded-sm p-8 md:p-10 text-center cursor-pointer hover:border-primary/40 transition-colors duration-500"
+              className="group border border-border rounded-sm p-8 md:p-10 text-center cursor-pointer hover:border-primary/40 transition-colors duration-500 block"
             >
               <h3 className="font-heading text-2xl md:text-3xl font-light text-foreground mb-3">
                 {frag.name}
@@ -29,7 +32,7 @@ const ShopByFragrance = () => {
               <p className="font-body text-xs text-muted-foreground tracking-wide font-light">
                 {frag.notes}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

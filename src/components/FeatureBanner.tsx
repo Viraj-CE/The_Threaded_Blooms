@@ -1,5 +1,6 @@
 import bannerImg from "@/assets/banner-festive.jpg";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const FeatureBanner = () => {
   return (
@@ -22,9 +23,11 @@ const FeatureBanner = () => {
         <h2 className="font-heading text-3xl md:text-5xl lg:text-[3.5rem] font-light text-primary-foreground mb-8 max-w-2xl mx-auto leading-[1.15]">
           Celebrate with Warm, Festive Scents
         </h2>
-        <Button variant="hero" size="lg" className="px-12 py-7 text-[11px]">
-          Explore Collection
-        </Button>
+        <Link to="/shop">
+          <Button variant="hero" size="lg" className="px-12 py-7 text-[11px]">
+            Explore Collection
+          </Button>
+        </Link>
       </div>
     </section>
   );
