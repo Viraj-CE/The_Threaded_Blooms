@@ -1,3 +1,5 @@
+import { ScrollReveal } from "./ScrollReveal";
+
 const reviews = [
   {
     name: "Sarah M.",
@@ -15,29 +17,32 @@ const reviews = [
 
 const CustomerReviews = () => {
   return (
-    <section className="py-24 md:py-36">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 md:mb-20">
-          <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            Testimonials
-          </p>
-          <h2 className="font-heading text-3xl md:text-[2.8rem] font-light text-foreground">
-            What Our Customers Say
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto">
-          {reviews.map((review) => (
-            <div
-              key={review.name}
-              className="bg-background p-8 md:p-10"
-            >
-              <p className="font-heading text-foreground/80 leading-[1.7] text-base italic mb-8">
-                "{review.text}"
-              </p>
-              <p className="font-body text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
-                {review.name}
-              </p>
-            </div>
+    <section className="py-24 md:py-36 overflow-hidden">
+      <div className="container mx-auto px-6 text-center">
+        <ScrollReveal>
+          <div className="text-center mb-16 md:mb-20">
+            <p className="font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-4 font-bold">
+              Testimonials
+            </p>
+            <h2 className="font-heading text-3xl md:text-[2.8rem] font-light text-foreground">
+              What Our Customers Say
+            </h2>
+          </div>
+        </ScrollReveal>
+        <div className="grid md:grid-cols-3 gap-px bg-border max-w-4xl mx-auto shadow-sm">
+          {reviews.map((review, index) => (
+            <ScrollReveal key={review.name} delay={index * 0.15}>
+              <div
+                className="bg-background p-8 md:p-10 h-full hover:bg-secondary/20 transition-colors duration-500"
+              >
+                <p className="font-heading text-foreground/80 leading-[1.7] text-base italic mb-8">
+                  "{review.text}"
+                </p>
+                <p className="font-body text-[11px] tracking-[0.15em] uppercase text-muted-foreground">
+                  {review.name}
+                </p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
