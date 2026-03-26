@@ -17,7 +17,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-foreground/35" />
       </div>
       <div className="relative z-10 container mx-auto px-6">
-        <ScrollReveal direction="up" delay={0.2}>
+        <ScrollReveal direction="up" delay={0.15}>
           <div className="max-w-xl">
             <p className="font-body text-[11px] tracking-[0.3em] uppercase text-primary-foreground/60 mb-6 font-bold">
               Hand-poured &middot; Natural &middot; Sustainable

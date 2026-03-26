@@ -16,6 +16,9 @@ import Shipping from "./pages/Shipping.tsx";
 import Auth from "./pages/Auth.tsx";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile.tsx";
+import Privacy from "./pages/Privacy.tsx";
+import Terms from "./pages/Terms.tsx";
+import Refunds from "./pages/Refunds.tsx";
 import { CartProvider } from "./context/CartContext.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
@@ -44,6 +47,9 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/refunds" element={<Refunds />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

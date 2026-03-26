@@ -48,7 +48,7 @@ const BestSellers = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full mt-3 rounded-sm border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                    className="w-full mt-3 rounded-sm border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all active:scale-95"
                     onClick={(e) => {
                       e.preventDefault();
                       addItem({

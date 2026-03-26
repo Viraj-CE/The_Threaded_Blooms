@@ -11,7 +11,7 @@ export type CartItem = {
 
 interface CartContextType {
     items: CartItem[];
-    addItem: (item: CartItem) => void;
+    addItem: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void;
     removeItem: (id: string) => void;
     updateQuantity: (id: string, quantity: number) => void;
     clearCart: () => void;
@@ -31,12 +31,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem("cart", JSON.stringify(items));
     }, [items]);
 
-    const addItem = (newItem: CartItem) => {
+    const addItem = (item: Omit<CartItem, "quantity"> & { quantity?: number }) => {
+        const newItem: CartItem = { ...item, quantity: item.quantity ?? 1 };
         setItems((currentItems) => {
-            const existingItem = currentItems.find((item) => item.id === newItem.id);
+            const existingItem = currentItems.find((i) => i.id === newItem.id);
             if (existingItem) {
-                return currentItems.map((item) =>
-                    item.id === newItem.id ? { ...item, quantity: item.quantity + newItem.quantity } : item
+                return currentItems.map((i) =>
+                    i.id === newItem.id ? { ...i, quantity: i.quantity + newItem.quantity } : i
                 );
             }
             return [...currentItems, newItem];

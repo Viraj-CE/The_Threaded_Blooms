@@ -107,5 +107,5 @@ export const mockProducts: Product[] = [
         category: "Bouquets",
         rating: 5,
         reviews: []
-    }
+    },
 ];

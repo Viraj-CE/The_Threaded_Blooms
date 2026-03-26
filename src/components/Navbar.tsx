@@ -17,6 +17,16 @@ const Navbar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -51,8 +61,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg">
-      <div className="container mx-auto px-6 flex items-center justify-between h-20 md:h-24">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50' : 'bg-background/90 backdrop-blur-lg'}`}>
+      <div className={`container mx-auto px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'}`}>
         <Link to="/" className="flex items-center gap-3 group">
           <img
             src={logoSvg}
@@ -165,9 +175,15 @@ const Navbar = () => {
           <Link to="/cart" className="relative text-foreground hover:text-primary transition-colors duration-300">
             <ShoppingBag size={20} strokeWidth={1.5} />
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-primary text-primary-foreground text-[9px] rounded-full flex items-center justify-center font-body">
+              <motion.span 
+                key={cartCount}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-primary text-primary-foreground text-[9px] rounded-full flex items-center justify-center font-body"
+              >
                 {cartCount}
-              </span>
+              </motion.span>
             )}
           </Link>
           <button
